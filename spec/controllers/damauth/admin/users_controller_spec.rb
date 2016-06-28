@@ -19,7 +19,7 @@ module Damauth
             data = attributes_for(:user, password: '123456', password_confirmation: '123456')
             expect do
               post :create, user: data
-            end.to change(User, :count).by(1)
+            end.to change(Damauth::User, :count).by(1)
           end
 
           it 'redirects to the home#index (homepage)' do
@@ -41,7 +41,7 @@ module Damauth
             conditions.each do |data|
               expect do
                 post :create, user: data
-              end.to change(User, :count).by(0)
+              end.to change(Damauth::User, :count).by(0)
             end
           end
         end
