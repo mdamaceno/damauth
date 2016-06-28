@@ -1,5 +1,5 @@
 Damauth::Engine.routes.draw do
-  scope module: 'admin' do
+  namespace :admin do
     get '/login' => 'sessions#new'
     post '/login' => 'sessions#create'
     get '/logout' => 'sessions#destroy'
