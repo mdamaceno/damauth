@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Damauth</title>
+    <%= stylesheet_link_tag    "damauth/application", media: "all" %>
+    <%= javascript_include_tag "damauth/application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= render 'damauth/partials/flash_messages' %>
+    <%= yield %>
+  </body>
+</html>

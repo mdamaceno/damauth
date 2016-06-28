@@ -1,0 +1,21 @@
+<% unless flash.empty? %>
+  <div class="">
+    <ul>
+      <% flash.each do |key, value| %>
+        <% if key == 'validation' %>
+          <% value.each do |attr| %>
+            <% attr[1].each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          <% end %>
+        <% end %>
+        <% if key == 'alert' %>
+          <li><%= value %></li>
+        <% end %>
+        <% if key == 'notice' %>
+          <li><%= value %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

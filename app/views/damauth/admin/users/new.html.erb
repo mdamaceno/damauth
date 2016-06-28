@@ -1,0 +1,11 @@
+<h1>Signup!</h1>
+<%= form_for :user, url: '/users' do |f| %>
+  <%= f.label :name, 'Nome' %>
+  <%= f.text_field :name, class: "form-control" %>
+  <%= f.label :name, 'Email' %>
+  <%= f.text_field :email, class: "form-control" %>
+  <%= f.label :name, 'Senha' %>
+  <%= f.password_field :password, class: "form-control" %>
+  <%= f.label :name, 'Confirmação de senha' %>
+  <%= f.password_field :password_confirmation, class: "form-control" %>
+<% end %>

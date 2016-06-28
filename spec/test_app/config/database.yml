@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: damasco_development
+  username: postgres
+  password:
+  host: localhost
+  port: 5432
+
+test:
+  <<: *default
+  database: damasco_test
+  username: postgres
+  password:
+  host: localhost
+  port: 5432
