@@ -30,12 +30,12 @@ module Damauth
 
       def error_if_already_regitered
         flash[:alert] = 'Email já cadastrado!'
-        redirect_to '/signup'
+        redirect_to admin_signup_path
       end
 
       def error_if_password_does_not_match
         flash[:alert] = 'Senha não confirmada!'
-        redirect_to '/signup'
+        redirect_to admin_signup_path
       end
 
       def error_validation

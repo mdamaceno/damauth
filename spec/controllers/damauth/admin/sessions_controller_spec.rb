@@ -46,7 +46,7 @@ module Damauth
 
         it 'logout redirects to homepage' do
           get :destroy
-          expect(response).to redirect_to '/login'
+          expect(response).to redirect_to admin_login_path
         end
       end
     end

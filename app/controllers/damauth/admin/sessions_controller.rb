@@ -20,11 +20,11 @@ module Damauth
               _format.html { redirect_to '/' }
             else
               # If user's login doesn't work, send them back to the login form.
-              _format.html { redirect_to '/login', notice: 'Usuário ou senha incorretos' }
+              _format.html { redirect_to admin_login_path, notice: 'Usuário ou senha incorretos' }
             end
           else
             _format.html do
-              redirect_to '/login', alert: @@session_validation
+              redirect_to admin_login_path, alert: @@session_validation
                 .validate_session(session_params)
                 .messages(locale: :'pt-BR')
             end
@@ -35,7 +35,7 @@ module Damauth
       def destroy
         session[:user_id] = nil
         respond_to do |_format|
-          _format.html { redirect_to '/login' }
+          _format.html { redirect_to admin_login_path }
         end
       end
 
