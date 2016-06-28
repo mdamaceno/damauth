@@ -10,7 +10,7 @@ module Damauth
       end
     end
 
-    def validate(params = {})
+    def validate_session(params = {})
       schema.call(params)
     end
 

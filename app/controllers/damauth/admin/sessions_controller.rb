@@ -3,12 +3,14 @@ module Damauth
     class SessionsController < Damauth::ApplicationController
       before_action :check_if_logged, only: [:new]
 
+      @@session_validation = Damauth::SessionValidations.new
+
       def new
       end
 
       def create
         respond_to do |_format|
-          if validates.messages.empty?
+          if @@session_validation.validate_session(session_params).messages.empty?
             user = User.find_by_email(session_params[:email])
             # If the user exists AND the password entered is correct.
             if user && user.authenticate(session_params[:password])
@@ -21,7 +23,11 @@ module Damauth
               _format.html { redirect_to '/login', notice: 'Usuário ou senha incorretos' }
             end
           else
-            _format.html { redirect_to '/login', alert: validates.messages(locale: :'pt-BR') }
+            _format.html do
+              redirect_to '/login', alert: @@session_validation
+                .validate_session(session_params)
+                .messages(locale: :'pt-BR')
+            end
           end
         end
       end
@@ -37,10 +43,6 @@ module Damauth
 
       def session_params
         params.require(:user).permit!
-      end
-
-      def validates
-        Damauth::SessionValidations.new.validate(session_params)
       end
     end
   end
