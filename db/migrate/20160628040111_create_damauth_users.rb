@@ -1,6 +1,7 @@
 class CreateDamauthUsers < ActiveRecord::Migration
   def change
     create_table :damauth_users do |t|
+      enable_extension 'uuid-ossp'
       t.string :username, limit: 100, null: false, unique: true
       t.string :email, null: false, unique: true
       t.string :password_digest, null: false

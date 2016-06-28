@@ -1,6 +1,7 @@
 class CreateFriendlyIdSlugs < ActiveRecord::Migration
   def change
     create_table :friendly_id_slugs do |t|
+      enable_extension 'uuid-ossp'
       t.string   :slug,           :null => false
       t.integer  :sluggable_id,   :null => false
       t.string   :sluggable_type, :limit => 50
